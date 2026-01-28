@@ -12,7 +12,7 @@ The code is organized by chapter, with each folder containing:
 ## Requirements
 
 ```bash
-pip install torch>=2.0 triton>=2.1 transformers
+uv sync --extra full
 ```
 
 For GPU benchmarks, you'll need an NVIDIA GPU with CUDA support.
@@ -53,10 +53,10 @@ from ch07 import ContinuousBatcher, RadixCache
 
 ```bash
 # Run all tests
-pytest
+uv run pytest
 
 # Run tests for a specific chapter
-pytest ch03/test_ch03.py -v
+uv run pytest ch03/test_ch03.py -v
 ```
 
 ## Running Benchmarks
@@ -65,10 +65,10 @@ Each chapter has benchmark scripts:
 
 ```bash
 # GEMV benchmark (Chapter 3)
-python -m ch03.gemv_benchmark
+uv run python -m ch03.gemv_benchmark
 
 # Attention memory benchmark (Chapter 6)
-python -m ch06.attention_memory
+uv run python -m ch06.attention_memory
 ```
 
 ## License
