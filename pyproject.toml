@@ -1,0 +1,47 @@
+[project]
+name = "physics-llm-inference"
+version = "1.0.0"
+description = "Companion code for The Physics of LLM Inference"
+authors = [
+    {name = "Elliot Arledge"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+keywords = ["llm", "inference", "transformers", "cuda", "gpu"]
+
+dependencies = [
+    "torch>=2.0",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+cuda = [
+    "triton>=2.1",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+full = [
+    "triton>=2.1",
+    "transformers>=4.35",
+    "flashinfer",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["ch01", "ch02", "ch03", "ch04", "ch05", "ch06", "ch07", "ch08", "ch09", "ch10"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]  # Line length handled by formatter
